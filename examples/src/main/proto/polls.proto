@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package grpc.example.polls;
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.polls";
+option java_outer_classname = "PollServiceProto";
+
+// The Poll creation service.
+service PollService {
+ // creates a poll
+ rpc CreatePoll (PollRequest) returns (PollResponse) {}
+}
+
+
+// The message containing Poll Request.
+message PollRequest {
+  string moderatorId = 1;
+  string question = 2;
+  string startedAt = 3;
+  string expiredAt = 4;
+  repeated string choice = 5;
+}
+// The message containing Poll Response.
+message PollResponse {
+  string id = 1;
+}
+
+
+
